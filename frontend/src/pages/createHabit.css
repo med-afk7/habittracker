@@ -1,0 +1,73 @@
+/* createHabit.css */
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  color: #222831;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f7f9fc;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(34, 40, 49, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #393e46;
+  margin-bottom: 0.25rem;
+}
+
+input[type="text"] {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #00adb5; /* nice teal */
+  box-shadow: 0 0 5px #00adb5aa;
+}
+
+button {
+  padding: 0.85rem 1.5rem;
+  background-color: #00adb5;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #028a8e;
+}
+
+button:active {
+  background-color: #017277;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}

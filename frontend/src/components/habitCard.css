@@ -1,0 +1,135 @@
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive tweak: on small screens, switch to 1 column */
+@media (max-width: 600px) {
+  .habits-grid {
+    grid-template-columns: 1fr; /* 1 column on small/mobile */
+  }
+}
+
+.habit-card {
+  background: #fefefe; /* soft off-white */
+  color: #222831;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(34, 40, 49, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.habit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(34, 40, 49, 0.15);
+}
+
+
+.days-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.day-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.day-label {
+  font-size: 0.9rem;
+  color: #666666;  /* medium gray */
+  font-weight: 600;
+}
+
+.day-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #d1d5db; /* light cool gray */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.04);
+}
+
+.day-box.active {
+  background-color: #10b981; /* emerald green */
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+}
+
+/* Delete button */
+.habit-card button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #ef4444; /* red-500 */
+  color: white;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.4);
+}
+
+.habit-card button:hover {
+  background-color: #dc2626; /* red-700 */
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.6);
+}
+
+/* Responsive */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .habit-card {
+    width: 320px;
+  }
+  .day-wrapper {
+    width: 32px;
+  }
+  .day-box {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .day-label {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .habit-card {
+    width: 100%;
+    min-height: 130px;
+    padding: 1rem;
+  }
+  .days-container {
+    gap: 0.5rem;
+  }
+  .day-wrapper {
+    width: 28px;
+  }
+  .day-box {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+  .day-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.15rem;
+  }
+}
