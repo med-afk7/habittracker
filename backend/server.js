@@ -1,26 +1,24 @@
 import express from "express";
 import habitRoutes from "./routes/habitRoutes.js"
-import mongoose from "mongoose";
-
-const PORT = 5000;
-
-const connectDB = async () => {
-const conn = await mongoose.connect ("mongodb+srv://ahmedwaleedarman7:T12341234t@cluster0.bfyukfw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
-if(conn){
-console.log("connected successfully");
-}}
+import { connectDB } from "./db/connect.db.js"
+import dotenv from "dotenv"
+import authRoutes from "./routes/authRoutes.js"
 
 
 
+
+
+dotenv.config();
 const app = express(); 
 
 app.use(express.json()); 
 
 app.use("/api/habits" , habitRoutes);
+app.use("/api/auth" , authRoutes);
 
 
 
-app.listen(PORT , ()=> {
+app.listen(process.env.PORT , ()=> {
     connectDB();
-    console.log("listeneing on port 5000");
+    console.log("listeneing on port " , process.env.PORT);
 })
