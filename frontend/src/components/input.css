@@ -1,0 +1,70 @@
+/* Wrapper that holds the icon and input field */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  background-color: white;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Change border color on focus-within but no shadow */
+.input-wrapper:focus-within {
+  border-color: #4CAF50;
+  box-shadow: none; /* Remove conflicting shadow */
+}
+
+/* Icon wrapper */
+.input-icon {
+  margin-right: 10px;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+/* Reset default browser input styles */
+.input-field {
+  all: unset;
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Placeholder style */
+.input-field::placeholder {
+  color: #aaa;
+}
+
+/* Custom focus style on input */
+.input-field:focus {
+  outline: none;
+
+  border-radius: 8px; /* keep rounding consistent */
+}
+
+/* Autofill fix for Chrome */
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+/* Optional: smooth transition for autofill fix */
+input {
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  all: unset;
+  font-size: 16px;
+  width: 100%;
+  color: #333;
+  background-color: transparent;
+  padding: 8px 0;
+   box-shadow: none;
+}
+
+

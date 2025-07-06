@@ -28,7 +28,7 @@ const userSchema= new mongoose.Schema({
         default:false
     }
     ,
-    resetPasswordToked:String,
+    resetPasswordToken:String,
     resetPasswordExpiresAt:Date,
     VerificationToken:String,
     VerificationTokenExpiresAt:Date,
