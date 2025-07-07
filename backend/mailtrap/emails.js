@@ -33,7 +33,7 @@ const response = await mailtrapClient.send({
 
     to: recipient,
 
-    template_uuid: "030302e4-cd7f-495e-9e65-87dc28fe5708",
+    template_uuid: "35f77aa4-2551-4bac-b182-691ed5c68332",
 
     template_variables: {
 

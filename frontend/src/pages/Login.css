@@ -1,0 +1,85 @@
+/* Container */
+.login-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* Heading */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1976d2; /* Blue */
+}
+
+/* Form styling */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Buttons */
+.login-container form button {
+  background-color: #1976d2;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container form button:hover {
+  background-color: #1565c0;
+}
+
+.login-container form button:active {
+  background-color: #0d47a1;
+}
+
+/* Disabled button */
+.disabled-button {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+}
+
+/* Error message */
+.error-message {
+  color: #e53935;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+/* Redirect sections */
+.login-redirect,
+.forgot-password-redirect {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-redirect a,
+.forgot-password-redirect a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.login-redirect a:hover,
+.forgot-password-redirect a:hover {
+  text-decoration: underline;
+}
