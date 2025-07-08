@@ -1,14 +1,41 @@
-import { useState ,useEffect } from 'react'
+import { useState ,useEffect} from 'react'
 import NavBar from './components/NavBar'
 import HabitCard from './components/HabitCard'
 import Habits from './pages/Habits'
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes , Navigate} from "react-router-dom";
 import CreateHabit from './pages/CreateHabit';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import EmailVerification from './pages/EmailVerification';
 import {Toaster} from 'react-hot-toast'
 import { useAuth } from './pages/authHelper/auth';
+
+
+
+const ProtectedRoute = ({ children }) => {
+	const { isAuthenticated, user } = useAuth();
+
+	if (!isAuthenticated) {
+		return <Navigate to='/login' replace />;
+	}
+
+	if (!user.isVerified) {
+		return <Navigate to='/verify-email' replace />;
+	}
+
+	return children;
+};
+
+
+const RedirectAuthenticatedUser = ({children}) =>{
+  const {isAuthenticated ,user } = useAuth();
+
+  if(isAuthenticated && user.isVerified){
+    return <Navigate to ="/" replace/>
+  }
+
+  return children;
+}
 
 
 function App() {
@@ -29,8 +56,16 @@ function App() {
 <NavBar></NavBar>
 
 <Routes>
-  <Route path='/signup' element={<SignUp></SignUp>}></Route>
-  <Route path='/login' element={<Login></Login>}></Route>
+  <Route path='/signup' 
+  element={
+  <RedirectAuthenticatedUser>
+    <SignUp></SignUp>
+    </RedirectAuthenticatedUser>
+  }></Route>
+  <Route path='/login' element={<
+    RedirectAuthenticatedUser>
+    <Login></Login>
+    </RedirectAuthenticatedUser>}></Route>
   <Route path='/' element={<Habits></Habits>}></Route>
   <Route path='/create' element={<CreateHabit></CreateHabit>}></Route>
   <Route path='/verify-email' element={<EmailVerification></EmailVerification>}></Route>
