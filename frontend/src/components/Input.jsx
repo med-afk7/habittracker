@@ -9,7 +9,7 @@ const Input = ({ icon: Icon, ...props }) => {
           <Icon size={20} />
         </div>
       )}
-      <input className="input-field" {...props} />
+      <input required className="input-field" {...props} />
     </div>
   );
 };

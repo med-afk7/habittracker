@@ -9,6 +9,9 @@ import Login from './pages/Login';
 import EmailVerification from './pages/EmailVerification';
 import {Toaster} from 'react-hot-toast'
 import { useAuth } from './pages/authHelper/auth';
+import LoadingSpinner from './components/LoadingSpinner';
+import ForgotPassword  from './pages/ForgotPassword';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 
 
@@ -40,15 +43,14 @@ const RedirectAuthenticatedUser = ({children}) =>{
 
 function App() {
   const [count, setCount] = useState(0)
-  const {isChecking , checkAuth , isAuthenticated, user} = useAuth();
+  const { isCheckingAuth  , checkAuth , isAuthenticated, user} = useAuth();
 
 
 	useEffect(() => {
 		checkAuth();
 	}, [checkAuth]);
 
-  console.log(isAuthenticated);
-  console.log(user);
+if (isCheckingAuth)return <LoadingSpinner/>
 
 
   return (
@@ -66,11 +68,20 @@ function App() {
     RedirectAuthenticatedUser>
     <Login></Login>
     </RedirectAuthenticatedUser>}></Route>
-  <Route path='/' element={<Habits></Habits>}></Route>
-  <Route path='/create' element={<CreateHabit></CreateHabit>}></Route>
+  <Route path='/' element={<ProtectedRoute><Habits/></ProtectedRoute>}></Route>
+  <Route path='/create' element={<ProtectedRoute><CreateHabit></CreateHabit></ProtectedRoute>}></Route>
   <Route path='/verify-email' element={<EmailVerification></EmailVerification>}></Route>
-
-
+  <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPassword></ForgotPassword></RedirectAuthenticatedUser>}></Route>
+  <Route
+					path='/reset-password/:token'
+					element={
+						<RedirectAuthenticatedUser>
+							<ResetPasswordPage />
+						</RedirectAuthenticatedUser>
+					}
+				/>
+				{/* catch all routes */}
+				<Route path='*' element={<Navigate to='/' replace />} />
 
 </Routes>
 <Toaster />

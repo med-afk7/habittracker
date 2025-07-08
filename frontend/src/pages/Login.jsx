@@ -4,6 +4,7 @@ import Input from '../components/Input';
 import { User, Mail, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Login.css'
+import {useAuth} from './authHelper/auth'
 
 const Login = () => {
 
@@ -20,16 +21,21 @@ const isPasswordValid = () => {
       /[^A-Za-z0-9]/.test(password)
     );
   };
+ const {login, error , isLoading } = useAuth();
 
-
-  const handleSignUp = (e) => {
+  const handleLogin= async (e) => {
     e.preventDefault();
     setTouched(true);
 
     if (!isPasswordValid()) return;
 
-    console.log('All criteria met. Submitting...');
-    // Submit logic here
+   try {
+      await login(email , password );
+        navigate('/verify-email');
+    } catch (error) {
+      console.log(error)
+    }
+
   };
 
   return (
@@ -41,7 +47,7 @@ const isPasswordValid = () => {
       <div className="login-container">
         
 
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleLogin}>
       
             <h2>Log in </h2>
 
@@ -76,6 +82,7 @@ const isPasswordValid = () => {
       </div>
 
 
+        {error&& <p>{error}</p>}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
