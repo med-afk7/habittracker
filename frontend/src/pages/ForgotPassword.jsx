@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { isLoading, forgotPassword } = useAuth();
+  const { isLoading, forgotPassword , error} = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,6 +45,7 @@ const ForgotPassword = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {error&& <p>{error}</p>}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

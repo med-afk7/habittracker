@@ -1,10 +1,15 @@
 import Habit from "../models/product.model.js";
 import mongoose from "mongoose";
 
+
 export const get_all = async (req , res) => {
 
+  const user_id = req.userId
+
     try {
-       const habits =  await Habit.find({});
+
+       const habits =  await Habit.find({user_id});
+       
        res.status(200).json(habits);
         
     } catch (error) {
@@ -18,9 +23,11 @@ export const new_habit= async (req , res) => {
     try{
     
     const {name} = req.body ;
+   
+
 
    if(!name){
-    res.status(400).json({error:'Name is required'});
+   return res.status(400).json({error:'Name is required'});
    }
 
 const currentWeek = getWeek();
@@ -29,7 +36,7 @@ const currentWeek = getWeek();
    tracking.set(currentWeek,[false,false,false,false,false,false,false]);
 
    const newHabit = new Habit({
-    name, tracking,
+    name, tracking,user_id:req.userId
    })
 
     await newHabit.save();

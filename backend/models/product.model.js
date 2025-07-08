@@ -9,7 +9,10 @@ const habitSchema = new mongoose.Schema({
         of:[Boolean],
         default:{},
     
-    }
+    }, 
+    user_id:{
+    type:String,
+    required :true},
 
 
 }, {timestamps:true});
