@@ -12,6 +12,8 @@ import { useAuth } from './pages/authHelper/auth';
 import LoadingSpinner from './components/LoadingSpinner';
 import ForgotPassword  from './pages/ForgotPassword';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import MonthHabits from './pages/MonthHabits';
+
 
 
 
@@ -85,6 +87,8 @@ if (isCheckingAuth)return <LoadingSpinner/>
 
 </Routes>
 <Toaster />
+
+<MonthHabits></MonthHabits>
 
 </>
   )
