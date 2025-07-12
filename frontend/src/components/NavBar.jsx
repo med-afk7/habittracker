@@ -17,14 +17,18 @@ const NavBar = () => {
         <Link to="/" className="navbar-title">HabitTracker!</Link>
       </div>
 
-      <div className="navbar-actions">
-        {isAuthenticated && (
-          <>
-            <Link className="nav-button" to="/create">Create</Link>
-            <button className="nav-button logout" onClick={handleLogout}>Logout</button>
-          </>
-        )}
+    <div className="navbar-actions">
+  {isAuthenticated && (
+    <>
+      <div className="nav-buttons-group">
+        <Link className="nav-button" to="/create">Create</Link>
+        <Link className="nav-button" to="/dashboard">Profile</Link>
       </div>
+      <button className="nav-button logout" onClick={handleLogout}>Logout</button>
+    </>
+  )}
+</div>
+
     </nav>
   );
 };

@@ -38,7 +38,7 @@ export const signup =  async (req,res) => {
         generateTokenAndSetCookie(res, user._id)
 
 
-         await sendVerificationEmail(user.email, vCode);
+        //  await sendVerificationEmail(user.email, vCode);
 
 
 
@@ -127,7 +127,7 @@ export const verifyemail = async (req , res ) =>{
         user.VerificationTokenExpiresAt=undefined;
         await user.save();
 
-        await sendWelcomeEmail(user.email , user.name);
+        // await sendWelcomeEmail(user.email , user.name);
 
         res.status(200).json({message: "email verified successfully" , user :{...user._doc , password:undefined} })
 

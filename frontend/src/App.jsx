@@ -13,6 +13,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import ForgotPassword  from './pages/ForgotPassword';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import MonthHabits from './pages/MonthHabits';
+import Dashboard from './pages/Dashboard';
 
 
 
@@ -82,13 +83,20 @@ if (isCheckingAuth)return <LoadingSpinner/>
 						</RedirectAuthenticatedUser>
 					}
 				/>
+
+          <Route
+					path='/dashboard'
+					element={
+            <ProtectedRoute>			
+            <Dashboard></Dashboard>
+            </ProtectedRoute>
+					}
+				/>
 				{/* catch all routes */}
 				<Route path='*' element={<Navigate to='/' replace />} />
 
 </Routes>
 <Toaster />
-
-<MonthHabits></MonthHabits>
 
 </>
   )

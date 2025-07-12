@@ -1,62 +1,105 @@
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: #00adb5;
-  color: white;
+  align-items: center;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
 }
 
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
 .logo-img {
   height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 .navbar-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: white;
   text-decoration: none;
+  color: #1f2937;
+  transition: color 0.3s ease;
 }
 
 .navbar-title:hover {
-  color: #cbd5e1;
+  color: #3b82f6;
 }
 
+/* 👇 New: Group nav buttons neatly */
 .navbar-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* 👇 Grouping "Create" and "Profile" together */
+.nav-buttons-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
 .nav-button {
-  padding: 0.5rem 1.1rem;
- background-color: #ef4444; /* Red for logout */
-  color: white;
-  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
   border: none;
   border-radius: 6px;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  background-color: #3b82f6;
+  color: white;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .nav-button:hover {
   background-color: #2563eb;
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .logout {
-  background-color: #ef4444; /* Red for logout */
+  background-color: #ef4444;
 }
 
 .logout:hover {
   background-color: #dc2626;
+}
+
+/* 🔄 Responsive: Stack buttons on mobile */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .navbar-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .nav-buttons-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .logout {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
 }

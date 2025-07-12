@@ -95,9 +95,6 @@ export const updateHabitTracking = async (req, res) => {
     return res.status(400).json({ message: "Week format must be YYYY-W##" });
   }
 
-  if (!Array.isArray(trackingArray) || trackingArray.length !== 7) {
-    return res.status(400).json({ message: "Invalid tracking data" });
-  }
 
   try {
     const habit = await Habit.findById(id);
@@ -106,6 +103,7 @@ export const updateHabitTracking = async (req, res) => {
     }
 
     habit.tracking.set(week, trackingArray);
+
     await habit.save();
 
     res.status(200).json({ message: "Tracking updated successfully", habit });
